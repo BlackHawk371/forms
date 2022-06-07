@@ -1,23 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import styles from './components/Assets/styles.css';
 
 function App() {
+const [title, setTitle] = useState('Hello World')
+const [blog, setBlog] = useState('My blog')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div>
+        <h2>Add a new Blog</h2>
+        <form>
+          <label>Blog Title:</label>
+          <input type="text"
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)} />
+          <label>Blog Body:</label>
+          <textarea required
+          value={blog}
+          onChange={ (e) => setBlog(e.target.value)}></textarea>
+          <label>Blog Author</label>
+          <select>
+            <option value="mario">Mario</option>
+            <option value="yoshi">Yoshi</option>
+          </select>
+          <button>Submit</button>
+          <p>{title}</p>
+          <p>{blog}</p>
+        </form>
+      </div>
+     
     </div>
   );
 }
